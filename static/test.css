@@ -1,0 +1,36 @@
+ul,
+li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.select-box {
+    height: 100%;
+    position: absolute;
+    left: 12px;
+    right: 56px;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+.select-list {
+    white-space: nowrap;
+    font-size: 0;
+    display: inline-block;
+    background-color: yellow;
+    -webkit-overflow-scrolling: touch;
+}
+
+.select-list li {
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    line-height: 46px;
+    background-color: #0e86fe;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 50%;
+    margin-top: 11px;
+    margin-right: 5px;
+}

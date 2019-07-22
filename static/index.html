@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+
+        <title>demo</title>
+        <link rel="stylesheet" href="/test.css" />
+        <script src="/zepto.js"></script>
+        <script src="/hammer.js"></script>
+    </head>
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root">
+            <div class="select-box">
+                <ul class="select-list">
+                    <li data-pro_id="48">记号笔</li>
+                    <li data-pro_id="48">记号笔</li>
+                    <li data-pro_id="48">记号笔</li>
+                    <li data-pro_id="48">记号笔</li>
+                    <li data-pro_id="48">记号笔</li>
+                    <li data-pro_id="48">记号笔</li>
+                    <li data-pro_id="48">记号笔</li>
+                    <li data-pro_id="48">记号笔</li>
+                    <li data-pro_id="48">记号笔</li>
+                    <li data-pro_id="48">记号笔</li>
+                    <li data-pro_id="48">记号笔</li>
+                </ul>
+            </div>
+        </div>
+        <script>
+            var panX = 0;
+            var minPanX = 0;
+            var calcMinPanx = function() {
+                return $(".select-box").width() - $(".select-list").width();
+            };
+            var setTransform = function(num) {
+                $(".select-list").css({
+                    transform: "translate3d(" + num + "px, 0px, 0px)"
+                });
+            };
+            setTransform(0);
+            var myElement = document.querySelector(".select-list");
+            var hammertime = new Hammer(myElement);
+            minPanX = calcMinPanx();
+            hammertime.on("panmove", function(ev) {
+                if (minPanX <= 0) {
+                    var deltaX = ev.deltaX;
+                    var tmp = panX + deltaX;
+                    if (minPanX <= tmp && tmp <= 0) {
+                        setTransform(tmp);
+                    } else {
+                        if (tmp < minPanX) {
+                            panX = minPanX;
+                        }
+                        if (tmp > 0) {
+                            panX = 0;
+                        }
+                        setTransform(panX);
+                    }
+                }
+            });
+            hammertime.on("panend", function(ev) {
+                if (minPanX <= 0) {
+                    var deltaX = ev.deltaX;
+                    var tmp = panX + deltaX;
+                    if (minPanX <= tmp && tmp <= 0) {
+                        panX = tmp;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+
+        <title>demo</title>
+        <link rel="stylesheet" href="/test.css" />
+        <style type="text/css">
+        #myElement {
+  background: silver;
+  height: 300px;
+  text-align: center;
+  font: 30px/300px Helvetica, Arial, sans-serif;
+}
+        </style>
+        <script src="https://cdn.bootcss.com/zepto/1.0.1/zepto.min.js"></script>
+        <script src="/hammer.js"></script>
+    </head>
+    <body>
+
+        <div id="myElement"></div>
+        </div>
+        <script>
+           var myElement = document.getElementById('myElement');
+
+// create a simple instance
+// by default, it only adds horizontal recognizers
+var mc = new Hammer(myElement);
+
+// let the pan gesture support all directions.
+// this will block the vertical scrolling on a touch-device while on the element
+mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+
+// listen to events...
+mc.on("panleft panright panup pandown tap press", function(ev) {
+    myElement.textContent = ev.type +" gesture detected.";
+});
+        </script>
+    </body>
+</html>
