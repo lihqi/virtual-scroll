@@ -1,4 +1,4 @@
-### 搭建一个 iconfont-demo 查看 ie8 是否支持 fontclass 使用方式(不支持)
+
 
 安装依赖
 
@@ -13,3 +13,4 @@ node index.js
 ```
 
 访问 localhost:3000 
+访问 localhost:3000/index2.html 是官方的demo
